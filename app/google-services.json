@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "839735319594",
+    "firebase_url": "https://marketmakers-71528.firebaseio.com",
+    "project_id": "marketmakers-71528",
+    "storage_bucket": "marketmakers-71528.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:839735319594:android:1460a2bfe0a67d1d",
+        "android_client_info": {
+          "package_name": "com.marketmakers.mobile"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "839735319594-a65eb8knlnm2hfj649dr8d41nf24teia.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.marketmakers.mobile",
+            "certificate_hash": "a49c974e5d266390289a9931faea817692a1607a"
+          }
+        },
+        {
+          "client_id": "839735319594-6knndp4me5q80o7beaaftge5ie86fdt1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCoYnAAwl5ceDG_YHzirHPunugMeQsMv38"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "839735319594-6knndp4me5q80o7beaaftge5ie86fdt1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
