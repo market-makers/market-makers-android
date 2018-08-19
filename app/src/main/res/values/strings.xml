@@ -9,4 +9,5 @@
     <string name="action_settings">Configurações</string>
     <string name="scanner_invalid_value">Valor inválido!</string>
     <string name="loading_invoice_info">Carregando informações</string>
+    <string name="btn_confirm">Confirmar</string>
 </resources>
