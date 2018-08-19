@@ -9,20 +9,12 @@
     tools:showIn="@layout/app_bar_invoice_confirmation"
     android:orientation="vertical">
 
-    <LinearLayout
+    <include
         android:id="@+id/content_loading"
+        layout="@layout/loading"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:visibility="gone">
-
-        <pl.droidsonroids.gif.GifImageView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:src="@drawable/loading"
-            android:layout_gravity="center"/>
-
-    </LinearLayout>
+        android:visibility="gone"/>
 
     <LinearLayout
         android:layout_width="match_parent"

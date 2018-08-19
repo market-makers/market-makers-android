@@ -30,6 +30,7 @@
             android:name=".ui.activity.InvoiceConfirmationActivity"
             android:label="@string/title_product_list"
             android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".ui.activity.DotsEarnedActivity"></activity>
     </application>
 
 </manifest>

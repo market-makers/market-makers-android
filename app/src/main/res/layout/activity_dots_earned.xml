@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.activity.DotsEarnedActivity"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/dots_earned_desc"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Title"
+        android:textSize="40sp"
+        android:gravity="center"
+        />
+
+    <TextView
+        android:id="@+id/btn_capture_photo"
+        android:layout_width="179dp"
+        android:layout_height="170dp"
+        android:background="@drawable/dots_circle"
+        android:textAlignment="center"
+        android:textSize="60sp"
+        android:textColor="@color/dots_earned"
+        android:layout_gravity="center"
+        android:gravity="center"
+        tools:text="50"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/dots_earned_desc_2"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Title"
+        android:textSize="40sp"
+        android:gravity="center"
+        />
+
+    <Button
+        android:id="@+id/btn_ok_dots_earned"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/btn_dots_earned_ok"
+        android:textSize="25sp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="40dp"/>
+
+</LinearLayout>
