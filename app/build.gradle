@@ -29,11 +29,13 @@ android {
     productFlavors {
 
         dev {
-            buildConfigField "String", "API_BASE_URL", '"http://192.168.25.44:8080/api/"'
+            buildConfigField "String", "API_BASE_URL", '"http://192.168.25.44:8080/"'
+            buildConfigField "Long", "RETROFIT_TIMEOUT", "15L"
         }
 
         prod {
             buildConfigField "String", "API_BASE_URL", '"https://api.marketmakersapp.club/"'
+            buildConfigField "int", "RETROFIT_TIMEOUT", "15L"
         }
     }
 }

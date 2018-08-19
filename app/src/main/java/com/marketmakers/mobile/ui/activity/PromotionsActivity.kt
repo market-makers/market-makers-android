@@ -11,7 +11,7 @@ import android.view.MenuItem
 import com.firebase.ui.auth.AuthUI
 import com.marketmakers.mobile.R
 import kotlinx.android.synthetic.main.activity_promotions.*
-import kotlinx.android.synthetic.main.app_bar.*
+import kotlinx.android.synthetic.main.app_bar_promotions.*
 import kotlinx.android.synthetic.main.content_promotions.*
 
 class PromotionsActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
@@ -22,8 +22,11 @@ class PromotionsActivity : AppCompatActivity(), NavigationView.OnNavigationItemS
         setContentView(R.layout.activity_promotions)
         setSupportActionBar(toolbar)
 
+        val userId = intent.extras.getString(EXTRA_CURRENT_USER)
+
         fab.setOnClickListener { view ->
             val intent = Intent(applicationContext, ScannerActivity::class.java)
+            intent.putExtra(ScannerActivity.extraCurrentUser, userId)
             startActivity(intent)
         }
 
