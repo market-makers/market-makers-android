@@ -63,7 +63,7 @@ class InvoiceConfirmationActivity : AppCompatActivity() {
                         //not implemented
                     }
 
-                });
+                })
 
     }
 

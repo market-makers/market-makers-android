@@ -6,21 +6,39 @@ import android.support.design.widget.NavigationView
 import android.support.v4.view.GravityCompat
 import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.app.AppCompatActivity
+import android.support.v7.widget.DefaultItemAnimator
+import android.support.v7.widget.LinearLayoutManager
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import com.firebase.ui.auth.AuthUI
 import com.marketmakers.mobile.R
+import com.marketmakers.mobile.model.Invoice
+import com.marketmakers.mobile.model.Promotion
+import com.marketmakers.mobile.repository.api.PromotionAPI
+import com.marketmakers.mobile.ui.adapter.ProductAdapter
+import com.marketmakers.mobile.ui.adapter.PromotionAdapter
+import io.reactivex.Observer
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.disposables.Disposable
+import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_promotions.*
 import kotlinx.android.synthetic.main.app_bar_promotions.*
 import kotlinx.android.synthetic.main.content_promotions.*
 
 class PromotionsActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
+    private val promotionApi by lazy {
+        PromotionAPI()
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_promotions)
         setSupportActionBar(toolbar)
+
+        content_loading.visibility = View.VISIBLE
+        content_promotion.visibility = View.GONE
 
         val userId = intent.extras.getString(EXTRA_CURRENT_USER)
 
@@ -36,6 +54,36 @@ class PromotionsActivity : AppCompatActivity(), NavigationView.OnNavigationItemS
         toggle.syncState()
 
         nav_view.setNavigationItemSelectedListener(this)
+
+        promotionApi
+                .api
+                .getPromotions()
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(object : Observer<List<Promotion>> {
+                    override fun onComplete() {
+                        //not implemented
+                    }
+
+                    override fun onSubscribe(d: Disposable) {
+                        //not implemented
+                    }
+
+                    override fun onNext(promotions: List<Promotion>) {
+                        with(promotions_recyclerview) {
+                            layoutManager = LinearLayoutManager(this@PromotionsActivity)
+                            itemAnimator = DefaultItemAnimator()
+                            adapter = PromotionAdapter( this@PromotionsActivity, promotions)
+
+                            content_loading.visibility = View.GONE
+                            content_promotion.visibility = View.VISIBLE
+                        }
+                    }
+
+                    override fun onError(e: Throwable) {
+                        //not implemented
+                    }
+                })
     }
 
     override fun onBackPressed() {
