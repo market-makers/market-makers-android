@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.support.v7.widget.DefaultItemAnimator
 import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
+import android.view.View
 import com.marketmakers.mobile.R
 import com.marketmakers.mobile.model.Invoice
 import com.marketmakers.mobile.model.UserInvoice
@@ -26,6 +27,9 @@ class InvoiceConfirmationActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_invoice_confirmation)
+
+        content_company.visibility = View.GONE
+        content_loading.visibility = View.VISIBLE
 
         val invoiceId = intent.extras.getString(extraInvoiceId)
         val userId = intent.extras.getString(extraCurrentUser)
@@ -67,6 +71,9 @@ class InvoiceConfirmationActivity : AppCompatActivity() {
                     itemAnimator = DefaultItemAnimator()
             adapter = ProductAdapter(invoice.products, this@InvoiceConfirmationActivity)
         }
+
+        content_company.visibility = View.VISIBLE
+        content_loading.visibility = View.GONE
 
     }
 
