@@ -1,5 +1,6 @@
 package com.marketmakers.mobile.ui.activity
 
+import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.DefaultItemAnimator
@@ -8,6 +9,7 @@ import android.util.Log
 import android.view.View
 import com.marketmakers.mobile.R
 import com.marketmakers.mobile.model.Invoice
+import com.marketmakers.mobile.model.User
 import com.marketmakers.mobile.model.UserInvoice
 import com.marketmakers.mobile.repository.api.UserAPI
 import com.marketmakers.mobile.ui.adapter.ProductAdapter
@@ -25,6 +27,10 @@ class InvoiceConfirmationActivity : AppCompatActivity() {
         UserAPI()
     }
 
+    private val userId by lazy {
+        intent.extras.getString(extraCurrentUser)
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_invoice_confirmation)
@@ -34,7 +40,6 @@ class InvoiceConfirmationActivity : AppCompatActivity() {
         content_loading.visibility = View.VISIBLE
 
         val invoiceId = intent.extras.getString(extraInvoiceId)
-        val userId = intent.extras.getString(extraCurrentUser)
 
         userApi
                 .api
@@ -43,10 +48,11 @@ class InvoiceConfirmationActivity : AppCompatActivity() {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(object : Observer<Invoice> {
                     override fun onComplete() {
-                        Log.d("Users", "Completed")
+                        //not implemented
                     }
 
                     override fun onSubscribe(d: Disposable) {
+                        //not implemented
                     }
 
                     override fun onNext(invoice: Invoice) {
@@ -54,7 +60,7 @@ class InvoiceConfirmationActivity : AppCompatActivity() {
                     }
 
                     override fun onError(e: Throwable) {
-                        Log.d("Users", "Error - ${e.message}")
+                        //not implemented
                     }
 
                 });
@@ -72,6 +78,38 @@ class InvoiceConfirmationActivity : AppCompatActivity() {
             layoutManager = LinearLayoutManager(this@InvoiceConfirmationActivity)
                     itemAnimator = DefaultItemAnimator()
             adapter = ProductAdapter(invoice.products, this@InvoiceConfirmationActivity)
+        }
+
+        btn_confirm_invoice.setOnClickListener { v ->
+            userApi
+                    .api
+                    .getUser(userId)
+                    .subscribeOn(Schedulers.newThread())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe(object : Observer<User> {
+                        override fun onComplete() {
+                            //not implemented
+                        }
+
+                        override fun onSubscribe(d: Disposable) {
+                            //not implemented
+                        }
+
+                        override fun onNext(user: User) {
+                            content_company.visibility = View.GONE
+                            content_loading.visibility = View.VISIBLE
+
+                            val intent = Intent(applicationContext, DotsEarnedActivity::class.java)
+                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
+                            intent.putExtra(DotsEarnedActivity.extraUserUpdated, user)
+                            startActivity(intent)
+                        }
+
+                        override fun onError(e: Throwable) {
+                            //not implemented
+                        }
+
+                    })
         }
 
         content_company.visibility = View.VISIBLE

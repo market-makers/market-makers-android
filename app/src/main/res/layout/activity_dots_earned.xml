@@ -16,7 +16,7 @@
         />
 
     <TextView
-        android:id="@+id/btn_capture_photo"
+        android:id="@+id/txt_dots_earned"
         android:layout_width="179dp"
         android:layout_height="170dp"
         android:background="@drawable/dots_circle"

@@ -1,6 +1,9 @@
 package com.marketmakers.mobile.model
 
-class User(val id: String,
+import java.io.Serializable
+
+class User(val id: Long,
+           val userApp: String,
            val name: String,
            val email: String,
-           val dots: Int)
+           val dots: Int) : Serializable
