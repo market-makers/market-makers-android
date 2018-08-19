@@ -1,8 +1,7 @@
-package com.marketmakers.mobile.promotions
+package com.marketmakers.mobile.ui.activity
 
 import android.content.Intent
 import android.os.Bundle
-import android.support.design.widget.Snackbar
 import android.support.design.widget.NavigationView
 import android.support.v4.view.GravityCompat
 import android.support.v7.app.ActionBarDrawerToggle
@@ -11,10 +10,9 @@ import android.view.Menu
 import android.view.MenuItem
 import com.firebase.ui.auth.AuthUI
 import com.marketmakers.mobile.R
-import com.marketmakers.mobile.auth.SignInActivity
-import com.marketmakers.mobile.scanner.ScannerActivity
 import kotlinx.android.synthetic.main.activity_promotions.*
-import kotlinx.android.synthetic.main.app_bar_promotions.*
+import kotlinx.android.synthetic.main.app_bar.*
+import kotlinx.android.synthetic.main.content_promotions.*
 
 class PromotionsActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 

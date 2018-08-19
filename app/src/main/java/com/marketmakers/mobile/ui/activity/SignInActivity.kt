@@ -1,4 +1,4 @@
-package com.marketmakers.mobile.auth
+package com.marketmakers.mobile.ui.activity
 
 import android.app.Activity
 import android.content.Intent
@@ -8,7 +8,6 @@ import android.widget.Toast
 import com.firebase.ui.auth.AuthUI
 import com.marketmakers.mobile.R
 import com.google.firebase.auth.FirebaseAuth
-import com.marketmakers.mobile.promotions.PromotionsActivity
 import java.util.*
 
 

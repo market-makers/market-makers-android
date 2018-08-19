@@ -1,4 +1,4 @@
-package com.marketmakers.mobile.scanner
+package com.marketmakers.mobile.ui.activity
 
 import android.Manifest
 import android.content.pm.PackageManager
