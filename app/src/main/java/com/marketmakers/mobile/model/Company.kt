@@ -1,5 +1,7 @@
 package com.marketmakers.mobile.model
 
+import java.io.Serializable
+
 class Company(val id: Int,
               val password: String,
               val patner: Boolean,
@@ -9,4 +11,4 @@ class Company(val id: Int,
               val email: String,
               val type: String,
               val categories: String,
-              val address: Address)
+              val address: Address) : Serializable

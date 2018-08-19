@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.activity.PromotionDetailsActivity"
+    android:orientation="vertical"
+    android:paddingLeft="20dp">
+
+    <include
+        android:id="@+id/content_loading"
+        layout="@layout/loading"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"/>
+
+    <LinearLayout
+        android:id="@+id/content_promotion_details"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/promotion_details_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Title"
+                android:textSize="30sp"
+                tools:text="Promoção X"
+                />
+
+            <TextView
+                android:id="@+id/promotion_details_type"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Headline"
+                android:textSize="27sp"
+                tools:text="CUPOM"
+                />
+
+            <TextView
+                android:id="@+id/promotion_details_value"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Headline"
+                android:textSize="27sp"
+                tools:text="12%"
+                />
+
+            <TextView
+                android:id="@+id/promotion_details_dots"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Headline"
+                android:textSize="27sp"
+                tools:text="120"
+                />
+
+            <TextView
+                android:id="@+id/promotion_details_desc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Headline"
+                android:textSize="22sp"
+                tools:text="Nova promoção"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="30dp">
+
+            <TextView
+                android:id="@+id/promotion_details_company_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Headline"
+                android:textSize="22sp"
+                tools:text="Extra"
+                />
+
+            <TextView
+                android:id="@+id/promotion_details_company_neighborhood"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Headline"
+                android:textSize="22sp"
+                tools:text="Jd Nova Europa"
+                />
+
+            <TextView
+                android:id="@+id/promotion_details_company_city_state"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Headline"
+                android:textSize="22sp"
+                tools:text="Campinas - SP"
+                />
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btn_rescue"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/btn_rescue"/>
+
+    </LinearLayout>
+
+</LinearLayout>

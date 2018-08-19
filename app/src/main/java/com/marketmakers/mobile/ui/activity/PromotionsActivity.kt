@@ -26,10 +26,14 @@ import kotlinx.android.synthetic.main.activity_promotions.*
 import kotlinx.android.synthetic.main.app_bar_promotions.*
 import kotlinx.android.synthetic.main.content_promotions.*
 
-class PromotionsActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
+class PromotionsActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener, PromotionAdapter.PromotionClickListener {
 
     private val promotionApi by lazy {
         PromotionAPI()
+    }
+
+    private val userId by lazy {
+        intent.extras.getString(EXTRA_CURRENT_USER)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -40,7 +44,6 @@ class PromotionsActivity : AppCompatActivity(), NavigationView.OnNavigationItemS
         content_loading.visibility = View.VISIBLE
         content_promotion.visibility = View.GONE
 
-        val userId = intent.extras.getString(EXTRA_CURRENT_USER)
 
         fab.setOnClickListener { view ->
             val intent = Intent(applicationContext, ScannerActivity::class.java)
@@ -54,6 +57,8 @@ class PromotionsActivity : AppCompatActivity(), NavigationView.OnNavigationItemS
         toggle.syncState()
 
         nav_view.setNavigationItemSelectedListener(this)
+
+        val context = this
 
         promotionApi
                 .api
@@ -71,9 +76,9 @@ class PromotionsActivity : AppCompatActivity(), NavigationView.OnNavigationItemS
 
                     override fun onNext(promotions: List<Promotion>) {
                         with(promotions_recyclerview) {
-                            layoutManager = LinearLayoutManager(this@PromotionsActivity)
+                            layoutManager = LinearLayoutManager(context)
                             itemAnimator = DefaultItemAnimator()
-                            adapter = PromotionAdapter( this@PromotionsActivity, promotions)
+                            adapter = PromotionAdapter( context, promotions, this@PromotionsActivity)
 
                             content_loading.visibility = View.GONE
                             content_promotion.visibility = View.VISIBLE
@@ -95,23 +100,28 @@ class PromotionsActivity : AppCompatActivity(), NavigationView.OnNavigationItemS
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        // Inflate the menu; this adds items to the action bar if it is present.
         menuInflater.inflate(R.menu.promotions, menu)
         return true
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         when (item.itemId) {
             R.id.action_settings -> return true
             else -> return super.onOptionsItemSelected(item)
         }
     }
 
+    override fun onClick(promotion: Promotion) {
+        content_loading.visibility = View.VISIBLE
+        content_promotion.visibility = View.GONE
+
+        val intent = Intent(this, PromotionDetailsActivity::class.java)
+        intent.putExtra(PromotionDetailsActivity.extraPromotion, promotion)
+        intent.putExtra(PromotionDetailsActivity.extraUser, userId)
+        startActivity(intent)
+    }
+
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
-        // Handle navigation view item clicks here.
         when (item.itemId) {
             R.id.nav_profile -> {
                 // Handle the camera action

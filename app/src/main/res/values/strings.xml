@@ -14,4 +14,5 @@
     <string name="dots_earned_desc">Você está com</string>
     <string name="dots_earned_desc_2">pontos</string>
     <string name="btn_dots_earned_ok">OK</string>
+    <string name="btn_rescue">Resgatar</string>
 </resources>

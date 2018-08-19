@@ -30,12 +30,12 @@ android {
 
         dev {
             buildConfigField "String", "API_BASE_URL", '"http://192.168.25.44:8080/"'
-            buildConfigField "Long", "RETROFIT_TIMEOUT", "15L"
+            buildConfigField "Long", "RETROFIT_TIMEOUT", "60L"
         }
 
         prod {
             buildConfigField "String", "API_BASE_URL", '"https://api.marketmakersapp.club/"'
-            buildConfigField "Long", "RETROFIT_TIMEOUT", "15L"
+            buildConfigField "Long", "RETROFIT_TIMEOUT", "60L"
         }
     }
 }

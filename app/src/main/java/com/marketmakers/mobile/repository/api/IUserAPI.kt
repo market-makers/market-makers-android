@@ -1,6 +1,7 @@
 package com.marketmakers.mobile.repository.api
 
 import com.marketmakers.mobile.model.Invoice
+import com.marketmakers.mobile.model.Rescue
 import com.marketmakers.mobile.model.User
 import com.marketmakers.mobile.model.UserInvoice
 import io.reactivex.Observable
@@ -16,4 +17,7 @@ interface IUserAPI {
 
     @GET("user/{id}")
     fun getUser(@Path("id") id: String): Observable<User>
+
+    @POST("user/rescue")
+    fun rescue(@Body rescue: Rescue): Observable<User>
 }

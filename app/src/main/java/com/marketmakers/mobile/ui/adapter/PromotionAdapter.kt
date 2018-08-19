@@ -11,7 +11,8 @@ import com.marketmakers.mobile.model.Promotion
 import kotlinx.android.synthetic.main.promotion_item.view.*
 
 class PromotionAdapter(private val context: Context,
-                       private val promotions: List<Promotion>) : RecyclerView.Adapter<PromotionAdapter.PromotionViewHolder>() {
+                       private val promotions: List<Promotion>,
+                       private val listener: PromotionClickListener) : RecyclerView.Adapter<PromotionAdapter.PromotionViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PromotionViewHolder {
         val layout = LayoutInflater.from(context).inflate(R.layout.promotion_item, parent, false)
         return PromotionViewHolder(layout)
@@ -33,7 +34,12 @@ class PromotionAdapter(private val context: Context,
                 promotion_value.text = "${promotion.value.toShort()}% -"
                 promotion_dots.text = "${promotion.dots.toString()} pontos"
                 promotion_company_name.text = promotion.company.name
+                setOnClickListener { listener.onClick(promotion) }
             }
         }
+    }
+
+    interface PromotionClickListener {
+        fun onClick(promotion: Promotion)
     }
 }

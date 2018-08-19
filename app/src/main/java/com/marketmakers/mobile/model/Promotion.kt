@@ -1,5 +1,7 @@
 package com.marketmakers.mobile.model
 
+import java.io.Serializable
+
 class Promotion( val id: Long,
                  val type: String,
                  val value: Double,
@@ -8,4 +10,4 @@ class Promotion( val id: Long,
                  val description: String,
                  val coupons: Long,
                  val expiration: Long,
-                 val company: Company)
+                 val company: Company) : Serializable
