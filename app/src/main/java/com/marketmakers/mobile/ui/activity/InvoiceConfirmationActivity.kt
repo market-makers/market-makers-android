@@ -16,6 +16,7 @@ import io.reactivex.Observer
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
+import kotlinx.android.synthetic.main.app_bar_promotions.*
 import kotlinx.android.synthetic.main.content_invoice_confirmation.*
 
 class InvoiceConfirmationActivity : AppCompatActivity() {
@@ -27,6 +28,7 @@ class InvoiceConfirmationActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_invoice_confirmation)
+        setSupportActionBar(toolbar)
 
         content_company.visibility = View.GONE
         content_loading.visibility = View.VISIBLE
