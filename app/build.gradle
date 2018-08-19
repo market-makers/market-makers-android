@@ -4,6 +4,8 @@ apply plugin: 'kotlin-android'
 
 apply plugin: 'kotlin-android-extensions'
 
+project.ext.set("flavorDimensionFree", "tier")
+
 android {
     compileSdkVersion 27
     defaultConfig {
@@ -13,11 +15,25 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        resConfigs "pt"
     }
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    flavorDimensions project.flavorDimensionFree
+
+    productFlavors {
+
+        dev {
+            buildConfigField "String", "API_BASE_URL", '"http://192.168.25.44:8080/api/"'
+        }
+
+        prod {
+            buildConfigField "String", "API_BASE_URL", '"https://api.marketmakersapp.club/"'
         }
     }
 }
@@ -29,6 +45,8 @@ dependencies {
     implementation 'com.android.support.constraint:constraint-layout:1.1.2'
     implementation 'com.google.firebase:firebase-auth:11.6.0'
     implementation 'com.firebaseui:firebase-ui-auth:4.1.0'
+    implementation 'com.squareup.retrofit2:retrofit:2.4.0'
+    implementation 'com.dlazaro66.qrcodereaderview:qrcodereaderview:2.0.3'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'

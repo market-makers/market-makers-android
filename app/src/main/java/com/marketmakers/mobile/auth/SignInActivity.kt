@@ -45,6 +45,7 @@ class SignInActivity : AppCompatActivity() {
                 finish()
             } else {
                 Toast.makeText(this,  "Ops, algo deu errado!", Toast.LENGTH_LONG).show()
+                finish()
             }
         }
     }

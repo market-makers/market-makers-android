@@ -1,5 +1,6 @@
 package com.marketmakers.mobile.promotions
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.design.widget.Snackbar
 import android.support.design.widget.NavigationView
@@ -8,7 +9,10 @@ import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
+import com.firebase.ui.auth.AuthUI
 import com.marketmakers.mobile.R
+import com.marketmakers.mobile.auth.SignInActivity
+import com.marketmakers.mobile.scanner.ScannerActivity
 import kotlinx.android.synthetic.main.activity_promotions.*
 import kotlinx.android.synthetic.main.app_bar_promotions.*
 
@@ -21,8 +25,8 @@ class PromotionsActivity : AppCompatActivity(), NavigationView.OnNavigationItemS
         setSupportActionBar(toolbar)
 
         fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                    .setAction("Action", null).show()
+            val intent = Intent(applicationContext, ScannerActivity::class.java)
+            startActivity(intent)
         }
 
         val toggle = ActionBarDrawerToggle(
@@ -60,23 +64,28 @@ class PromotionsActivity : AppCompatActivity(), NavigationView.OnNavigationItemS
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         // Handle navigation view item clicks here.
         when (item.itemId) {
-            R.id.nav_camera -> {
+            R.id.nav_profile -> {
                 // Handle the camera action
             }
-            R.id.nav_gallery -> {
+            R.id.nav_points -> {
 
             }
-            R.id.nav_slideshow -> {
+            R.id.nav_getcoupon -> {
 
             }
-            R.id.nav_manage -> {
+            R.id.nav_promotions -> {
 
             }
-            R.id.nav_share -> {
+            R.id.nav_history -> {
 
             }
-            R.id.nav_send -> {
-
+            R.id.nav_logout -> {
+                AuthUI.getInstance()
+                        .signOut(this)
+                        .addOnCompleteListener { t ->
+                            startActivity(Intent(this, SignInActivity::class.java))
+                            finish()
+                        }
             }
         }
 
